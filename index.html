@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Reminder System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="navbar-title">🚗 Vehicle Reminder System</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Summary Cards -->
+        <section class="summary-section">
+            <div class="summary-card total-vehicles">
+                <h3>Total Vehicles</h3>
+                <p class="summary-number" id="totalVehicles">0</p>
+            </div>
+            <div class="summary-card upcoming-reminders">
+                <h3>Upcoming Reminders</h3>
+                <p class="summary-number" id="upcomingReminders">0</p>
+            </div>
+            <div class="summary-card overdue-reminders">
+                <h3>Overdue Reminders</h3>
+                <p class="summary-number" id="overdueReminders">0</p>
+            </div>
+        </section>
+
+        <!-- Vehicle Management Section -->
+        <section class="vehicles-section">
+            <div class="section-header">
+                <h2>Vehicles</h2>
+                <button class="btn btn-primary" id="addVehicleBtn">+ Add Vehicle</button>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="search-filter">
+                <input 
+                    type="text" 
+                    id="vehicleSearch" 
+                    class="search-input" 
+                    placeholder="Search by name or vehicle number..."
+                >
+            </div>
+
+            <!-- Vehicles Table/Cards Container -->
+            <div id="vehiclesContainer" class="vehicles-container">
+                <div class="empty-state">
+                    <p>No vehicles added yet. Add one to get started!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reminders Section -->
+        <section class="reminders-section">
+            <div class="section-header">
+                <h2>Reminders</h2>
+                <div class="filter-group">
+                    <select id="reminderTypeFilter" class="filter-select">
+                        <option value="">All Types</option>
+                        <option value="Insurance">Insurance</option>
+                        <option value="Service">Service</option>
+                        <option value="PUC">PUC</option>
+                        <option value="RC">RC</option>
+                        <option value="Custom">Custom</option>
+                    </select>
+                    <select id="reminderStatusFilter" class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="upcoming">Upcoming</option>
+                        <option value="due-soon">Due Soon</option>
+                        <option value="overdue">Overdue</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Reminders Container -->
+            <div id="remindersContainer" class="reminders-container">
+                <div class="empty-state">
+                    <p>No reminders yet. Add a vehicle and create reminders!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add/Edit Vehicle Modal -->
+    <div id="vehicleModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="vehicleModalTitle">Add Vehicle</h3>
+                <button class="modal-close" id="closeVehicleModal">&times;</button>
+            </div>
+            <form id="vehicleForm">
+                <div class="form-group">
+                    <label for="vehicleName">Vehicle Name/Model *</label>
+                    <input type="text" id="vehicleName" required>
+                </div>
+                <div class="form-group">
+                    <label for="vehicleNumber">Vehicle Number *</label>
+                    <input type="text" id="vehicleNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="vehicleType">Vehicle Type *</label>
+                    <select id="vehicleType" required>
+                        <option value="">Select Type</option>
+                        <option value="Car">Car</option>
+                        <option value="Bike">Bike</option>
+                        <option value="Truck">Truck</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ownerName">Owner Name *</label>
+                    <input type="text" id="ownerName" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Vehicle</button>
+                    <button type="button" class="btn btn-secondary" id="cancelVehicleBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Reminder Modal -->
+    <div id="reminderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="reminderModalTitle">Add Reminder</h3>
+                <button class="modal-close" id="closeReminderModal">&times;</button>
+            </div>
+            <form id="reminderForm">
+                <div class="form-group">
+                    <label for="reminderVehicle">Select Vehicle *</label>
+                    <select id="reminderVehicle" required>
+                        <option value="">Choose a vehicle</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reminderType">Reminder Type *</label>
+                    <select id="reminderType" required>
+                        <option value="">Select Type</option>
+                        <option value="Insurance">Insurance</option>
+                        <option value="Service">Service</option>
+                        <option value="PUC">PUC</option>
+                        <option value="RC">RC</option>
+                        <option value="Custom">Custom</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reminderDueDate">Due Date *</label>
+                    <input type="date" id="reminderDueDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="reminderNotes">Notes (Optional)</label>
+                    <textarea id="reminderNotes" rows="3" placeholder="Add any additional notes..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Reminder</button>
+                    <button type="button" class="btn btn-secondary" id="cancelReminderBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

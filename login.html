@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Vehicle Repair Login</title> 
+  <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background: linear-gradient(to right, #f5f5f5, #e0e0e0);
+    }
+
+    .container{
+        width:850px;
+        height:420px;
+        background:#fff;
+        display:flex;
+        border-radius:10px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.2);
+        overflow:hidden;
+    }
+
+    /* Left Image Section */
+    .left{
+        width:50%;
+        background:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70')
+        no-repeat center center/cover;
+    }
+
+    /* Right Login Section */
+    .right{
+        width:50%;
+        padding:40px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+    }
+
+    h1{
+        font-size:28px;
+        margin-bottom:10px;
+    }
+
+    h1 span{
+        color:#ff6600;
+    }
+
+    .input-box{
+        margin:15px 0;
+    }
+
+    .input-box input{
+        width:100%;
+        padding:10px;
+        border:1px solid #ccc;
+        border-radius:5px;
+        outline:none;
+        transition:0.0;
+    }
+
+    .input-box input:focus{
+        border-color:#ff6600;
+    }
+
+    .options{
+        display:flex;
+        justify-content:space-between;
+        font-size:13px;
+        margin-bottom:15px;
+    }
+
+    .options a{
+        text-decoration:none;
+        color:#ff6600;
+    }
+
+    .btn{
+        width:100%;
+        padding:10px;
+        background:#ff6600;
+        border:none;
+        color:#fff;
+        border-radius:5px;
+        cursor:pointer;
+        font-size:15px;
+        transition:0.0;
+    }
+
+    .btn:hover{
+        background:#e65c00;
+    }
+
+    .footer{
+        text-align:center;
+        font-size:12px;
+        margin-top:15px;
+        color:#888;
+    }
+
+    @media(max-width:768px){
+        .container{
+            flex-direction:column;
+            height:auto;
+            width:90%;
+        }
+        .left{
+            height:200px;
+            width:100%;
+        }
+        .right{
+            width:100%;
+        }
+    }
+
+</style> 
+ </head> 
+ <body> 
+  <div class="container"> 
+   <div class="left"></div> 
+   <div class="right"> 
+    <h1>Vehicle services <span>Reminder</span></h1> 
+    <form> 
+     <div class="input-box"> 
+      <input type="text" placeholder="Username" required> 
+     </div> 
+     <div class="input-box"> 
+      <input type="password" placeholder="Password" required> 
+     </div> 
+     <div class="options"> <label><input type="checkbox"> Remember Me</label> <a href="#">Forgot Password?</a> 
+     </div> <button class="btn">Login</button> 
+    </form> 
+    <div class="footer">
+      © 2026 Vehicle Repair System 
+    </div> 
+   </div> 
+  </div> 
+ </body>
+</html>
